@@ -2,7 +2,7 @@
 Hello World, but with more meat.
 """
 
-import wx
+import wx  
 
 class HelloFrame(wx.Frame):
     """
@@ -17,7 +17,7 @@ class HelloFrame(wx.Frame):
         pnl = wx.Panel(self)
 
         # put some text with a larger bold font on it
-        st = wx.StaticText(pnl, label="Hello World!")
+        st = wx.StaticText(pnl, label="Hello and Welcome to Settlers of Catan!")
         font = st.GetFont()
         font.PointSize += 10
         font = font.Bold()
@@ -64,7 +64,7 @@ class HelloFrame(wx.Frame):
         # triggered from the keyboard.
         menuBar = wx.MenuBar()
         menuBar.Append(fileMenu, "&File")
-        menuBar.Append(helpMenu, "&Help")
+        menuBar.Append(helpMenu, "& Game Help")
 
         # Give the menu bar to the frame
         self.SetMenuBar(menuBar)
@@ -98,6 +98,6 @@ if __name__ == '__main__':
     # When this module is run (not imported) then create the app, the
     # frame, show it, and start the event loop.
     app = wx.App()
-    frm = HelloFrame(None, title='Hello World 2')
+    frm = HelloFrame(None, title='Catan Game')
     frm.Show()
     app.MainLoop()
