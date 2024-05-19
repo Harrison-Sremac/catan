@@ -31,7 +31,7 @@ class Board:
         biomes = ["Forest", "Pasture", "Fields", "Hills", "Mountains", "Desert"]
 
     def generate_tile(self):
-        self.nodes.append(Node("Ore"))
+        self.nodes.append(Node("Forest"))
         for _ in range(6):
             self.nodes.append(Node(None))
         for i in range(1, 7):
