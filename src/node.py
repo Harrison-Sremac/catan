@@ -3,9 +3,9 @@ class Node:
     Initializes a node with resource r. If r equals None, then it is a place for a city.
     """
 
-    def __init__(self, r):
-        self.resource = r
-        self.next = None
+    def __init__(self, data):
+        self.resource = data
+        # self.next = None
         self.owner = None
         self.building_type = None  # 'settlement', 'city', or None
         self.adjacent_resources = []
@@ -13,8 +13,10 @@ class Node:
     """
     Methods meant for adding or removing resource cards from players hands
     """
-    def insertAtEnd(self, r):
-        newNode = Node(r)
+    
+    """
+    def insertAtEnd(self, data):
+        newNode = Node(data)
         if self.head is None:
             self.head = newNode
             return
@@ -31,18 +33,17 @@ class Node:
         
         self.head = self.head.next
 
-    def deleteResource(self, r):
+    def deleteResource(self, data):
         currentNode = self.head
-        if currentNode.r == r:
+        if currentNode.data == data:
             self.removeFirstNode()
             return
-        while currentNode is not None and currentNode.next.data != r:
+        while currentNode is not None and currentNode.next.data != data:
             currentNode = currentNode.next
  
         if currentNode is None:
             return
         else:
             currentNode.next = currentNode.next.next
-            
-            
-        
+                  
+    """
