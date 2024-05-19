@@ -29,12 +29,9 @@ class Board:
         # numbers will correlate to different biomes
         # there should be 19 tiles in Catan generated
         biomes = ["Forest", "Pasture", "Fields", "Hills", "Mountains", "Desert"]
-        dice_values = [12,2,1,1,3,3,4,4,5,5,6,6,8,8,9,9,10,10,11,11]
 
-        
-
-    def generate_tile(self):  
-        self.nodes.append(Node("Ore"))
+    def generate_tile(self):
+        self.nodes.append(Node("Forest"))
         for _ in range(6):
             self.nodes.append(Node(None))
         for i in range(1, 7):
