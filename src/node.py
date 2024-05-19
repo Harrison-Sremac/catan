@@ -29,41 +29,6 @@ class Node:
         # self.building_type = None  # 'settlement', 'city', or None
         # self.adjacent_resources = []
 
-    """
-    Methods meant for adding or removing resource cards from players hands
-    """
-
-    # def insertAtEnd(self, r):
-    #     newNode = Node(r)
-    #     if self.head is None:
-    #         self.head = newNode
-    #         return
-
-    #     currentNode = self.head
-    #     while currentNode.next:
-    #         currentNode = currentNode.next
-
-    #     currentNode.next = newNode
-
-    # def removeFirstNode(self):
-    #     if self.head == None:
-    #         return
-
-    #     self.head = self.head.next
-
-    # def deleteResource(self, r):
-    #     currentNode = self.head
-    #     if currentNode.r == r:
-    #         self.removeFirstNode()
-    #         return
-    #     while currentNode is not None and currentNode.next.data != r:
-    #         currentNode = currentNode.next
-
-    #     if currentNode is None:
-    #         return
-    #     else:
-    #         currentNode.next = currentNode.next.next
-
     def __str__(self):
         return (
             "Id: "
