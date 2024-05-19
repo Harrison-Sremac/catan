@@ -5,5 +5,5 @@ from board import Board
 
 
 p = Board()
-p.generate_tile()
+p.gen_board()
 print(p)
