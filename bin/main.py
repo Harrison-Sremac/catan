@@ -24,8 +24,11 @@ class BoardPanel(wx.Panel):
         board = []
         for biome, count in biome_counts.items():
             board.extend([biome] * count)
-        
+
+        board.remove('Desert')  # Remove the desert tile
         random.shuffle(board)
+        board.insert(9, 'Desert')  # Insert the desert tile at the center position (index 9)
+
         return board
 
     def OnPaint(self, event):
@@ -36,24 +39,23 @@ class BoardPanel(wx.Panel):
         hex_radius = self.hex_radius
         hex_height = int(hex_radius * 2)
         hex_width = int((3**0.5) * hex_radius)
-        
         # Coordinates for the center of the hex grid
         start_x, start_y = 300, 300
 
         # Hex grid layout for a standard Catan board
         layout = [
-            (0, -2), (1, -2), (2, -2),
-            (-1, -1), (0, -1), (1, -1), (2, -1),
+            (-1, -2), (0, -2), (1, -2),
+            (-1.5, -1), (-0.5, -1), (0.5, -1), (1.5, -1),
             (-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0),
-            (-2, 1), (-1, 1), (0, 1), (1, 1),
-            (-2, 2), (-1, 2), (0, 2)
+            (-1.5, 1), (-0.5, 1), (0.5, 1), (1.5, 1),
+            (-1, 2), (-0, 2), (1, 2)
         ]
 
         index = 0
         for offset in layout:
             dx, dy = offset
-            x = start_x + int(dx * hex_width * 3 / 4)
-            y = start_y + int(dy * hex_height * 0.866)  # 0.866 is sqrt(3)/2
+            x = start_x + int(dy * hex_width * 3 / 4)  # swapped dx and dy for rotation
+            y = start_y + int(dx * hex_height * 0.866)  # swapped dx and dy for rotation
             
             biome = self.board[index] if index < len(self.board) else 'None'
             self.DrawHexagon(dc, x, y, hex_radius, biome)
@@ -104,6 +106,8 @@ class CatanFrame(wx.Frame):
         panel.SetSizer(sizer)
 
         self.SetTitle('Catan Game')
+        self.SetSize((800, 600))  # Set the default window size to 800x600
+
         self.Centre()
 
 def main():
